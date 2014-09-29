@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Angular Audio Player Test</title>
+	<script type=""></script>
+	<script type="text/javascript" src="/Scripts/angular.js"></script>
+	<script type="text/javascript" src="/Scripts/angular-audioplayer/angular-audioplayer.js"></script>
+	<script type="text/javascript" src="/Scripts/app/controllers/MainCtrl.js"></script>
+	<script type="text/javascript" src="/Scripts/app/app.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/Content/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/Content/angular-audioplayer.css">
+	<link rel="stylesheet" type="text/css" href="/Content/site.css">
+</head>
+<body ng-app="testApp">
+	<h2>Angular Audio Player Test</h2>
+
+	<div ng-controller="MainCtrl">
+
+		<div id="audio-player-container">
+			<audio-player src="http://upload.wikimedia.org/wikipedia/en/9/9f/Sample_of_%22Another_Day_in_Paradise%22.ogg"></audio-player>
+		</div>
+
+		<div class="audio-player-source" ng-click="setAudioPlayerSource('http://upload.wikimedia.org/wikipedia/en/4/45/ACDC_-_Back_In_Black-sample.ogg')">
+			http://upload.wikimedia.org/wikipedia/en/4/45/ACDC_-_Back_In_Black-sample.ogg
+		</div>
+
+		<div class="audio-player-source" ng-click="setAudioPlayerSource('http://upload.wikimedia.org/wikipedia/en/b/b5/Radiohead_-_Pyramid_Song_%28sample%29.ogg')">
+			http://upload.wikimedia.org/wikipedia/en/b/b5/Radiohead_-_Pyramid_Song_%28sample%29.ogg
+		</div>
+
+		<div class="audio-player-source" ng-click="setAudioPlayerSource('http://upload.wikimedia.org/wikipedia/en/9/9f/Sample_of_%22Another_Day_in_Paradise%22.ogg')">
+			http://upload.wikimedia.org/wikipedia/en/9/9f/Sample_of_%22Another_Day_in_Paradise%22.ogg
+		</div>
+
+		<div class="audio-player-source" ng-click="setAudioPlayerSource('http://upload.wikimedia.org/wikipedia/en/1/1f/%22Layla%22%2C_Derek_and_the_Dominos_song_%28sample%29.ogg')">
+			http://upload.wikimedia.org/wikipedia/en/1/1f/%22Layla%22%2C_Derek_and_the_Dominos_song_%28sample%29.ogg
+		</div>
+	</div>
+</body>
+</html>

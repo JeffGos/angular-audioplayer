@@ -1,0 +1,14 @@
+﻿body {
+	text-align: center;
+}
+
+#audio-player-container {
+	margin: 50px auto;
+	width: 600px;
+}
+
+.audio-player-source {
+	padding: 10px;
+	color: #ff8500;
+	cursor: pointer;
+}
