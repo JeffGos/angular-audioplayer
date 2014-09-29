@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>angular-audioplayer</id>
+    <version>1.0.0</version>
+    <authors>Jeff Gosling</authors>
+    <owners>Jeff Gosling</owners>
+    <licenseUrl>https://github.com/JeffGos/angular-audioplayer/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/JeffGos/angular-audioplayer</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An HTML 5 audio player service and player controls directive for AngularJS</description>
+    <releaseNotes>Initial Release</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>angular audio player angular-audioplayer angularjs</tags>
+	
+	<dependencies>
+      <dependency id="angularjs" version="1.2.25" />
+      <dependency id="bootstrap" version="3.2.0" />
+    </dependencies>
+	
+  </metadata>
+  
+  <files>
+    <file src=".\angular-audioplayer\**\*.*" target="" /> 
+  </files>
+  
+</package>
