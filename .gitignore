@@ -949,3 +949,11 @@ packages
 /src/TestSite/fonts/glyphicons-halflings-regular.svg
 /src/TestSite/fonts/glyphicons-halflings-regular.ttf
 /src/TestSite/fonts/glyphicons-halflings-regular.woff
+/src/TestSite/Content/angular-audioplayer.css
+angular-audioplayer
+/src/TestSite/Scripts/bootstrap.js
+/src/TestSite/Scripts/bootstrap.min.js
+/src/TestSite/Scripts/jquery-1.9.0.intellisense.js
+/src/TestSite/Scripts/jquery-1.9.0.js
+/src/TestSite/Scripts/jquery-1.9.0.min.js
+/src/TestSite/Scripts/jquery-1.9.0.min.map

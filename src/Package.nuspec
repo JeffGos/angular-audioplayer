@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>angular-audioplayer</id>
-    <version>1.0.0</version>
+    <version>1.0.3</version>
     <authors>Jeff Gosling</authors>
     <owners>Jeff Gosling</owners>
     <licenseUrl>https://github.com/JeffGos/angular-audioplayer/blob/master/LICENSE</licenseUrl>
@@ -21,7 +21,9 @@
   </metadata>
   
   <files>
-    <file src=".\angular-audioplayer\**\*.*" target="" /> 
+    <file src="angular-audioplayer\Content\angular-audioplayer.css" target="Content\Content" /> 
+	<file src="angular-audioplayer\Scripts\angular-audioplayer\angular-audioplayer.html" target="Content\Scripts\angular-audioplayer" /> 
+	<file src="angular-audioplayer\Scripts\angular-audioplayer\angular-audioplayer.js" target="Content\Scripts\angular-audioplayer" /> 
   </files>
   
 </package>
