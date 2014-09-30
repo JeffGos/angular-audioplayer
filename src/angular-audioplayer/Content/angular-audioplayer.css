@@ -113,15 +113,15 @@
 	overflow: hidden;
 }
 
-.transparent {
+.ap-transparent {
 	opacity: 0;
 }
 
-.highlight {
+.ap-highlight {
 	color: #ff8500;
 }
 
-tracktime, trackduration, volumebackground, volumebar, volumedraggable, progressbackground, progressbar, progressdraggable {
+aptracktime, aptrackduration, apvolumebackground, apvolumebar, apvolumedraggable, approgressbackground, approgressbar, approgressdraggable {
 	display: block;	
 }
 

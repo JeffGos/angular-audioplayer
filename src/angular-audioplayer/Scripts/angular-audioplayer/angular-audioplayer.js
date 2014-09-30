@@ -186,14 +186,14 @@
 		self.updateTimer = undefined;
 		self.lastMouseX = 0;
 
-		self.progressBackgroundElement = element.find("progressbackground");
-		self.progressBarElement = element.find("progressbar");
-		self.progressDraggableElement = element.find("progressdraggable");
+		self.progressBackgroundElement = element.find("approgressbackground");
+		self.progressBarElement = element.find("approgressbar");
+		self.progressDraggableElement = element.find("approgressdraggable");
 		self.progressDragged = false;
 
-		self.volumeBackgroundElement = element.find("volumebackground");
-		self.volumeBarElement = element.find("volumebar");
-		self.volumeDraggableElement = element.find("volumedraggable");
+		self.volumeBackgroundElement = element.find("apvolumebackground");
+		self.volumeBarElement = element.find("apvolumebar");
+		self.volumeDraggableElement = element.find("apvolumedraggable");
 		self.volumeDragged = false;
 
 		volumeDraggableElement.on('mousedown', function (event) {

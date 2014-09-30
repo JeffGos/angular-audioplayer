@@ -34,38 +34,38 @@
 	<div class="ap-volume-container" ng-show="showVolume">
 		<div class="ap-button-container">
 			<button type="button" class="btn btn-default btn-sm" ng-click="onMuteClick()">
-				<span ng-class="{ 'glyphicon glyphicon-volume-off highlight': isMuted, 'glyphicon glyphicon-volume-up': !isMuted }"></span>
+				<span ng-class="{ 'glyphicon glyphicon-volume-off ap-highlight': isMuted, 'glyphicon glyphicon-volume-up': !isMuted }"></span>
 			</button>
 		</div>
 
 		<div class="ap-volume-slider-container">
 
-			<volumedraggable class="ap-volume-slider-draggable"></volumedraggable>
+			<apvolumedraggable class="ap-volume-slider-draggable"></apvolumedraggable>
 
-			<volumebackground class="ap-volume-slider-background" ng-click="onVolumeBarClick($event)">
-				<volumebar class="ap-volume-slider">
+			<apvolumebackground class="ap-volume-slider-background" ng-click="onVolumeBarClick($event)">
+				<apvolumebar class="ap-volume-slider">
 
-				</volumebar>
-			</volumebackground>
+				</apvolumebar>
+			</apvolumebackground>
 		</div>
 	</div>
 
 	<div class="clearfix"></div>
 
 	<div class="ap-progress-container">
-		<progressdraggable class="ap-progress-draggable"></progressdraggable>
+		<approgressdraggable class="ap-progress-draggable"></approgressdraggable>
 
-		<span class="ap-progress-time-container badge" ng-class="{ 'transparent': !showProgressTimes }">
+		<span class="ap-progress-time-container badge" ng-class="{ 'ap-transparent': !showProgressTimes }">
 			{{currentTimeFormatted}}
 		</span>
 
-		<span class="ap-progress-duration-container badge" ng-class="{ 'transparent': !showProgressTimes }">
+		<span class="ap-progress-duration-container badge" ng-class="{ 'ap-transparent': !showProgressTimes }">
 			{{durationFormatted}}
 		</span>
 
-		<progressbackground class="ap-progress-bar-background" ng-click="onProgressBarClick($event)">
-			<progressbar class="ap-progress-bar" role="progressbar" aria-valuenow="{{progressPercent}}" aria-valuemin="0" aria-valuemax="100"></progressbar>
-		</progressbackground>
+		<approgressbackground class="ap-progress-bar-background" ng-click="onProgressBarClick($event)">
+			<approgressbar class="ap-progress-bar" role="progressbar" aria-valuenow="{{progressPercent}}" aria-valuemin="0" aria-valuemax="100"></approgressbar>
+		</approgressbackground>
 	</div>
 	<div class="clearfix"></div>
 
