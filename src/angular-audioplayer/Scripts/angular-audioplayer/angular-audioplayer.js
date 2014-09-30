@@ -218,11 +218,7 @@
 
 			self.refreshCurrentTime();
 
-			if (scope.isPlaying) {
-				self.play();
-			} else {
-				self.stop();
-			}
+			self.play();
 		});
 
 		audioPlayer.setOnTrackEnded(function () { self.stop(); });
@@ -320,8 +316,9 @@
 
 		scope.$watch('src', function (newValue, oldValue) {
 			if (newValue) {
-				audioPlayer.setTrackSource(newValue);
 				audioPlayer.setMimeType(scope.type);
+				audioPlayer.setTrackSource(newValue);
+				
 			}
 
 			self.refreshCurrentTime();
