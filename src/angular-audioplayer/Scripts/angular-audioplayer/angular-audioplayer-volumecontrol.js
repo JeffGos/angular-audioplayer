@@ -5,6 +5,9 @@
 		var self = this;
 		self.lastMouseX = 0;
 
+		self.volumeRange = 0;
+		self.halfDraggableWidthAsPercentOfRange = 0;
+
 		self.volumeDraggableElement = angular.element(element[0].children[0].children[1].children[0]);
 		self.volumeBackgroundElement = angular.element(element[0].children[0].children[1].children[1]);
 		self.volumeBarElement = angular.element(element[0].children[0].children[1].children[1].children[0]);
@@ -14,6 +17,9 @@
 			event.preventDefault();
 			self.volumeDragged = true;
 			self.lastMouseX = event.pageX;
+
+			self.volumeRange = self.volumeBackgroundElement[0].offsetWidth;
+			self.halfDraggableWidthAsPercentOfRange = (self.volumeDraggableElement[0].offsetWidth / 2 / self.volumeRange) * 100;
 
 			$document.on('mousemove', self.onVolumeMouseMove);
 			$document.on('mouseup', self.onVolumeMouseUp);
@@ -25,6 +31,9 @@
 
 		scope.volumeDraggablePercent = 0;
 		scope.volumePercent = 0;
+
+		self.volumeRange = self.volumeBackgroundElement[0].offsetWidth;
+		self.halfDraggableWidthAsPercentOfRange = (self.volumeDraggableElement[0].offsetWidth / 2 / self.volumeRange) * 100;
 
 		scope.onMuteClick = function () {
 			scope.isMuted = !scope.isMuted;
@@ -46,7 +55,7 @@
 			scope.volumePercent = audioPlayerService.getVolumePercent();
 			scope.volumeDraggablePercent = scope.volumePercent < 1 ? 0 : scope.volumePercent - 1;
 			self.volumeBarElement.css({ width: scope.volumePercent + "%" });
-			self.volumeDraggableElement.css({ left: scope.volumeDraggablePercent + "%" });
+			self.volumeDraggableElement.css({ left: (scope.volumeDraggablePercent - self.halfDraggableWidthAsPercentOfRange) + "%" });
 		}
 
 		self.onVolumeMouseMove = function (event) {
@@ -56,7 +65,7 @@
 
 			if (self.volumeDragged) {
 				var volumePercent = audioPlayerService.getVolumePercent();
-				volumePercent += offset * 100 / self.volumeBackgroundElement[0].offsetWidth;
+				volumePercent += offset * 100 / self.volumeRange;
 				audioPlayerService.setVolumePercent(volumePercent);
 				self.refreshVolume();
 			}

@@ -70,12 +70,12 @@
 		}
 
 		scope.onSkipPreviousClick = function () {
-			self.stop();
+			self.pause();
 			audioPlayerService.skipPrevious();
 		}
 
 		scope.onSkipNextClick = function () {
-			self.stop();
+			self.pause();
 			audioPlayerService.skipNext();
 		}
 
@@ -85,11 +85,6 @@
 
 		scope.onFastForwardClick = function (val) {
 			audioPlayerService.fastForward(val * 1000);
-		}
-
-		scope.onMuteClick = function () {
-			scope.isMuted = !scope.isMuted;
-			audioPlayerService.mute();
 		}
 
 		scope.onProgressBarClick = function (event) {
