@@ -3,7 +3,8 @@
 }
 
 #audio-player-container {
-	margin: 50px auto;
+	margin: 0px auto;
+	padding-top: 30px;
 	width: 600px;
 }
 

@@ -7,8 +7,7 @@
 	self.isPlaying = false;
 	self.player = new Audio();
 	self.player.controls = false;
-
-	setPreload("auto");
+	setPreload("none");
 	setOnPlaying(null);
 	setOnPaused(null);
 
@@ -74,13 +73,13 @@
 	}
 
 	function fastForward(stepMs) {
-		var step = stepMs || 1000;
+		var step = stepMs || 10000;
 
 		self.player.currentTime += (step / 1000);
 	}
 
 	function rewind(stepMs) {
-		var step = stepMs || 1000;
+		var step = stepMs || 10000;
 
 		self.player.currentTime -= (step / 1000);
 	}
@@ -108,6 +107,11 @@
 	}
 
 	function setProgressMs(progressMs) {
+
+		if (self.player.readyState == 0) {
+			return;
+		}
+
 		self.player.currentTime = progressMs / 1000;
 	}
 
@@ -118,7 +122,6 @@
 	function setProgressPercent(progressPercent) {
 
 		if (isNaN(self.player.duration)) {
-			console.error("Cannot set progress as a percent - current track has no duration");
 			setProgressMs(0);
 			return;
 		}
@@ -217,8 +220,6 @@
 		audioPlayer.setOnTrackChanged(function () {
 
 			self.refreshCurrentTime();
-
-			self.play();
 		});
 
 		audioPlayer.setOnTrackEnded(function () { self.stop(); });
@@ -316,16 +317,28 @@
 
 		scope.$watch('src', function (newValue, oldValue) {
 			if (newValue) {
-				audioPlayer.setMimeType(scope.type);
 				audioPlayer.setTrackSource(newValue);
-				
 			}
 
 			self.refreshCurrentTime();
 		});
 
+		scope.$watch('preload', function (newValue, oldValue) {
+			if (newValue) {
+				audioPlayer.setPreload(newValue);
+			}
+		});
+
+		scope.$watch('type', function (newValue, oldValue) {
+			if (newValue) {
+				audioPlayer.setMimeType(newValue);
+			}
+		});
+
+		scope.$watch()
+
 		scope.$on('$destroy', function () {
-			self.stop();
+			//self.stop();
 		});
 
 		self.play = function () {
@@ -365,8 +378,8 @@
 		self.refreshVolume = function () {
 			scope.volumePercent = audioPlayer.getVolumePercent();
 			scope.volumeDraggablePercent = scope.volumePercent < 1 ? 0 : scope.volumePercent - 1;
-			self.volumeBarElement.css({ width: scope.volumePercent + "%"});
-			self.volumeDraggableElement.css({ left: scope.volumeDraggablePercent + "%"});
+			self.volumeBarElement.css({ width: scope.volumePercent + "%" });
+			self.volumeDraggableElement.css({ left: scope.volumeDraggablePercent + "%" });
 		}
 
 		self.formatTime = function (value, format) {
@@ -450,7 +463,8 @@
 		restrict: 'E',
 		scope: {
 			src: '@',
-			type: '@'
+			type: '@',
+			preload: '@'
 		},
 		templateUrl: '/Scripts/angular-audioplayer/angular-audioplayer.html',
 		link: link

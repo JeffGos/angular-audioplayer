@@ -1,4 +1,8 @@
-﻿.ap-main-container {
+﻿audio-player {
+	display: block;
+}
+
+.ap-main-container {
 	background-color: #424242;
 	padding: 15px;
 	border-radius: 6px;

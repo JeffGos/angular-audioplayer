@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>angular-audioplayer</id>
-    <version>1.0.3</version>
+    <version>1.0.5</version>
     <authors>Jeff Gosling</authors>
     <owners>Jeff Gosling</owners>
     <licenseUrl>https://github.com/JeffGos/angular-audioplayer/blob/master/LICENSE</licenseUrl>
