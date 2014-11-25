@@ -76,7 +76,7 @@
 
 		scope.onSkipNextClick = function () {
 			self.stop();
-			audioPlayerService.skipPrevious();
+			audioPlayerService.skipNext();
 		}
 
 		scope.onRewindClick = function (val) {
@@ -134,12 +134,7 @@
 
 		self.onPaused = function () {
 			scope.isPlaying = false;
-			startProgressTimer();
-		}
-
-		self.onStopped = function () {
-			scope.isPlaying = false;
-			startProgressTimer();
+			stopProgressTimer();
 			refreshCurrentTime();
 		}
 

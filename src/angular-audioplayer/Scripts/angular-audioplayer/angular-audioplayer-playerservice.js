@@ -113,9 +113,8 @@
 
 	function stop() {
 		pause();
-		setPlaylistIndex(0);
 		setProgressPercent(0);
-		self.isPlaying = false
+		onPaused();
 	}
 
 	function skipNext() {
