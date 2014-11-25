@@ -1,16 +1,16 @@
 ﻿<div class="ap-main-container" ng-mouseenter="showProgressTimes=true" ng-mouseleave="showProgressTimes=false">
 
-	<div class="ap-button-container" ng-show="showSkipPrevious">
+	<div class="ap-button-container" ng-show="!hideSkipPrevious">
 		<button type="button" class="btn btn-default btn-sm" ng-click="onSkipPreviousClick()">
 			<span class="glyphicon glyphicon-step-backward"></span>
 		</button>
 	</div>
-	<div class="ap-button-container" ng-show="showRewind">
+	<div class="ap-button-container" ng-show="!hideRewind">
 		<button type="button" class="btn btn-default btn-sm" ng-click="onRewindClick()">
 			<span class="glyphicon glyphicon-backward"></span>
 		</button>
 	</div>
-	<div class="ap-button-container" ng-show="showStop">
+	<div class="ap-button-container" ng-show="!hideStop">
 		<button type="button" class="btn btn-default btn-sm" ng-click="onStopClick()">
 			<span class="glyphicon glyphicon-stop"></span>
 		</button>
@@ -20,40 +20,21 @@
 			<span ng-class="{ 'glyphicon glyphicon-pause': isPlaying, 'glyphicon glyphicon-play': !isPlaying }"></span>
 		</button>
 	</div>
-	<div class="ap-button-container" ng-show="showFastForward">
+	<div class="ap-button-container" ng-show="!hideFastForward">
 		<button type="button" class="btn btn-default btn-sm" ng-click="onFastForwardClick()">
 			<span class="glyphicon glyphicon-forward"></span>
 		</button>
 	</div>
-	<div class="ap-button-container" ng-show="showSkipNext">
+	<div class="ap-button-container" ng-show="!hideSkipNext">
 		<button type="button" class="btn btn-default btn-sm" ng-click="onSkipNextClick()">
 			<span class="glyphicon glyphicon-step-forward"></span>
 		</button>
 	</div>
 
-	<div class="ap-volume-container" ng-show="showVolume">
-		<div class="ap-button-container">
-			<button type="button" class="btn btn-default btn-sm" ng-click="onMuteClick()">
-				<span ng-class="{ 'glyphicon glyphicon-volume-off ap-highlight': isMuted, 'glyphicon glyphicon-volume-up': !isMuted }"></span>
-			</button>
-		</div>
-
-		<div class="ap-volume-slider-container">
-
-			<apvolumedraggable class="ap-volume-slider-draggable"></apvolumedraggable>
-
-			<apvolumebackground class="ap-volume-slider-background" ng-click="onVolumeBarClick($event)">
-				<apvolumebar class="ap-volume-slider">
-
-				</apvolumebar>
-			</apvolumebackground>
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	<div class="ap-progress-container">
-		<approgressdraggable class="ap-progress-draggable"></approgressdraggable>
+	<audio-volume-control ng-show="!hideVolume"></audio-volume-control>
+	
+	<div class="ap-progress-container" ng-show="!hideProgressBar">
+		<div class="ap-progress-draggable"></div>
 
 		<span class="ap-progress-time-container badge" ng-class="{ 'ap-transparent': !showProgressTimes }">
 			{{currentTimeFormatted}}
@@ -63,13 +44,12 @@
 			{{durationFormatted}}
 		</span>
 
-		<approgressbackground class="ap-progress-bar-background" ng-click="onProgressBarClick($event)">
-			<approgressbar class="ap-progress-bar" role="progressbar" aria-valuenow="{{progressPercent}}" aria-valuemin="0" aria-valuemax="100"></approgressbar>
-		</approgressbackground>
+		<div class="ap-progress-bar-background" ng-click="onProgressBarClick($event)">
+			<div class="ap-progress-bar" role="progressbar" aria-valuenow="{{progressPercent}}" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
 	</div>
-	<div class="clearfix"></div>
 
-	<div class="ap-text-container" ng-show="showDescription && description != null">
+	<div class="ap-text-container" ng-show="!hideDescription && description != null">
 		{{description}}
 	</div>
 

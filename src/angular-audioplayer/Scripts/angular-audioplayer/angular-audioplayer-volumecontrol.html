@@ -1,0 +1,18 @@
+﻿<div class="ap-volume-container">
+
+	<div class="ap-button-container">
+		<button type="button" class="btn btn-default btn-sm" ng-click="onMuteClick()">
+			<span ng-class="{ 'glyphicon glyphicon-volume-off ap-highlight': isMuted, 'glyphicon glyphicon-volume-up': !isMuted }"></span>
+		</button>
+	</div>
+
+	<div class="ap-volume-slider-container">
+
+		<div class="ap-volume-slider-draggable"></div>
+
+		<div class="ap-volume-slider-background" ng-click="onVolumeBarClick($event)">
+			<div class="ap-volume-slider">
+			</div>
+		</div>
+	</div>
+</div>

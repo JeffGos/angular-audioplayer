@@ -1,3 +1,3 @@
 ﻿var Application = angular.module("testApp", ["angularAudioPlayer"])
 
-.controller("MainCtrl", ["$scope", "audioPlayer", MainCtrl]);
+.controller("MainCtrl", ["$scope", "audioPlayerService", MainCtrl]);

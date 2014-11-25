@@ -72,6 +72,11 @@
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
     <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-audioplayer\angular-audioplayer-playercontrol.html" />
+    <Content Include="Scripts\angular-audioplayer\angular-audioplayer-playercontrol.js" />
+    <Content Include="Scripts\angular-audioplayer\angular-audioplayer-playerservice.js" />
+    <Content Include="Scripts\angular-audioplayer\angular-audioplayer-volumecontrol.html" />
+    <Content Include="Scripts\angular-audioplayer\angular-audioplayer-volumecontrol.js" />
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-csp.css" />
@@ -103,7 +108,6 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
-    <Content Include="Scripts\angular-audioplayer\angular-audioplayer.html" />
     <Content Include="Scripts\angular-audioplayer\angular-audioplayer.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

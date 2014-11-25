@@ -4,6 +4,9 @@
 	<title>Angular Audio Player Test</title>
 	<script type=""></script>
 	<script type="text/javascript" src="/Scripts/angular.js"></script>
+	<script type="text/javascript" src="/Scripts/angular-audioplayer/angular-audioplayer-playercontrol.js"></script>
+	<script type="text/javascript" src="/Scripts/angular-audioplayer/angular-audioplayer-playerservice.js"></script>
+	<script type="text/javascript" src="/Scripts/angular-audioplayer/angular-audioplayer-volumecontrol.js"></script>
 	<script type="text/javascript" src="/Scripts/angular-audioplayer/angular-audioplayer.js"></script>
 	<script type="text/javascript" src="/Scripts/app/controllers/MainCtrl.js"></script>
 	<script type="text/javascript" src="/Scripts/app/app.js"></script>
@@ -18,7 +21,7 @@
 	<div ng-controller="MainCtrl">
 
 		<div id="audio-player-container">
-			<audio-player src="http://upload.wikimedia.org/wikipedia/en/9/9f/Sample_of_%22Another_Day_in_Paradise%22.ogg"></audio-player>
+			<audio-player-control src="http://upload.wikimedia.org/wikipedia/en/9/9f/Sample_of_%22Another_Day_in_Paradise%22.ogg"></audio-player-control>
 		</div>
 
 		<div class="audio-player-source" ng-click="setAudioPlayerSource('http://upload.wikimedia.org/wikipedia/en/4/45/ACDC_-_Back_In_Black-sample.ogg')">

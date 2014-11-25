@@ -1,5 +1,5 @@
-﻿function MainCtrl($scope, audioPlayer) {
+﻿function MainCtrl($scope, audioPlayerService) {
 	$scope.setAudioPlayerSource = function(source) {
-		audioPlayer.setTrackSource(source);
+		audioPlayerService.setTrackSource(source);
 	}
 }
