@@ -70,21 +70,19 @@
 		}
 
 		scope.onSkipPreviousClick = function () {
-			self.pause();
 			audioPlayerService.skipPrevious();
 		}
 
 		scope.onSkipNextClick = function () {
-			self.pause();
 			audioPlayerService.skipNext();
 		}
 
 		scope.onRewindClick = function (val) {
-			audioPlayerService.rewind(val * 1000);
+			audioPlayerService.rewind(val);
 		}
 
 		scope.onFastForwardClick = function (val) {
-			audioPlayerService.fastForward(val * 1000);
+			audioPlayerService.fastForward(val);
 		}
 
 		scope.onProgressBarClick = function (event) {
@@ -146,10 +144,10 @@
 		}
 
 		self.refreshCurrentTime = function () {
-			scope.duration = audioPlayerService.getDurationMs() / 1000;
+			scope.duration = audioPlayerService.getDurationSeconds();
 			scope.durationFormatted = formatTime(scope.duration);
 
-			scope.currentTime = audioPlayerService.getProgressMs() / 1000;
+			scope.currentTime = audioPlayerService.getProgressSeconds();
 			scope.currentTimeFormatted = formatTime(scope.currentTime);
 
 			scope.progressPercent = scope.currentTime * 100 / scope.duration;

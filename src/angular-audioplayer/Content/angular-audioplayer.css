@@ -5,7 +5,7 @@
 .ap-main-container {
 	min-height: 60px;
 	min-width: 420px;
-	background-color: #424242;
+	background-color: #b1b1b1;
 	padding: 15px;
 	border-radius: 6px;
 	text-align: left;
@@ -14,7 +14,7 @@
 
 .ap-button-container {
 	float: left;
-	padding-right: 5px;
+	padding-right: 6px;
 }
 
 .ap-button-container > button {
@@ -25,7 +25,7 @@
 .ap-volume-container {
 	float: right;
 	width: 150px;
-	background: #808080;
+	background: #d3d3d3;
 	padding-right: 10px;
 	border-radius: 3px;
 }
@@ -81,7 +81,7 @@
 .ap-progress-bar {
 	width: 0px;
 	height: 6px;
-	background-color: #ff8500;
+	background-color: #4EA3D6;
 	cursor: pointer;
 	border-top-left-radius: 3px;
 	border-bottom-left-radius: 3px;
@@ -93,14 +93,14 @@
 	position: absolute;
 	margin-top: 3px;
 	cursor: pointer;
-    background: #ff8500;
+    background: #4EA3D6;
     width: 12px;
     height: 12px;
     border-radius: 50%;
 }
 
 .ap-progress-time-container {
-	background-color: #ff8500;
+	background-color: #4EA3D6;
 	left: 0;
 }
 
@@ -130,5 +130,5 @@
 }
 
 .ap-highlight {
-	color: #ff8500;
+	color: #4EA3D6;
 }

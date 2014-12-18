@@ -2,7 +2,10 @@
 
 	var self = this;
 
-	self.defaultStepMs = 10000;
+	self.shuffle = false;
+	self.repeat = false;
+
+	self.defaultStepSeconds = 10;
 	self.isPlaying = false;
 	self.player = new Audio();
 	self.player.controls = false;
@@ -10,7 +13,7 @@
 
 	self.playlist = null;
 	self.currentPlaylistIndex = 0;
-	self.pendingSeekMs = -1;
+	self.pendingSeekSeconds = -1;
 
 	self.onReadyListeners = [];
 	self.onTrackChangedListeners = [];
@@ -33,6 +36,10 @@
 			self.loading = true;
 			self.player.type = self.playlist[self.currentPlaylistIndex].type;
 			self.player.src = self.playlist[self.currentPlaylistIndex].src;
+		} else {
+			self.loading = false;
+			self.player.type = null;
+			self.player.src = null;
 		}
 	}
 
@@ -47,7 +54,7 @@
 		setPlaylistIndex: setPlaylistIndex,
 		getPlaylistIndex: getPlaylistIndex,
 
-		setDefaultStepMs: setDefaultStepMs,
+		setDefaultStepSeconds: setDefaultStepSeconds,
 		fastForward: fastForward,
 		rewind: rewind,
 
@@ -56,11 +63,11 @@
 		getVolumePercent: getVolumePercent,
 
 		setPreload: setPreload,
-		setProgressMs: setProgressMs,
-		getProgressMs: getProgressMs,
+		setProgressSeconds: setProgressSeconds,
+		getProgressSeconds: getProgressSeconds,
 		setProgressPercent: setProgressPercent,
 		getProgressPercent: getProgressPercent,
-		getDurationMs: getDurationMs,
+		getDurationSeconds: getDurationSeconds,
 		getIsPlaying: getIsPlaying,
 		getIsMuted: getIsMuted,
 
@@ -78,8 +85,8 @@
 		self.player.preload = preload;
 	}
 
-	function setDefaultStepMs(defaultStepMs) {
-		self.defaultStepMs = defaultStepMs;
+	function setDefaultStepSeconds(defaultStepSeconds) {
+		self.defaultStepSeconds = defaultStepSeconds;
 	}
 
 	function setPlaylist(playlist) {
@@ -123,10 +130,17 @@
 			return;
 		}
 
+		pause();
+
 		var idx = self.currentPlaylistIndex + 1;
 
 		if (idx >= self.playlist.length) {
-			idx = 0;
+
+			if (self.repeat) {
+				idx = 0;
+			} else {
+				return;
+			}
 		}
 
 		setPlaylistIndex(idx);
@@ -139,10 +153,16 @@
 			return;
 		}
 
+		pause();
+
 		var idx = self.currentPlaylistIndex - 1;
 
 		if (idx < 0) {
-			idx = self.playlist.length - 1;
+			if (self.repeat) {
+				idx = self.playlist.length - 1;
+			} else {
+				return;
+			}
 		}
 
 		setPlaylistIndex(idx);
@@ -150,24 +170,24 @@
 		play();
 	}
 
-	function fastForward(stepMs) {
-		var step = stepMs || self.defaultStepMs;
+	function fastForward(stepSeconds) {
+		var step = stepSeconds || self.defaultStepSeconds;
 
 		if (self.player.readyState == 0) {
 			return;
 		}
 
-		self.player.currentTime += (step / 1000);
+		self.player.currentTime += step;
 	}
 
-	function rewind(stepMs) {
-		var step = stepMs || self.defaultStepMs;
+	function rewind(stepSeconds) {
+		var step = stepSeconds || self.defaultStepSeconds;
 
 		if (self.player.readyState == 0) {
 			return;
 		}
 
-		self.player.currentTime -= (step / 1000);
+		self.player.currentTime -= step;
 	}
 
 	function mute() {
@@ -192,40 +212,40 @@
 		return self.player.volume * 100;
 	}
 
-	function setProgressMs(progressMs) {
+	function setProgressSeconds(progressSeconds) {
 
 		if (self.player.readyState == 0) {
 			return;
 		}
 
 		if (self.loading) {
-			self.pendingSeekMs = progressMs;
+			self.pendingSeekSeconds = progressSeconds;
 		} else {
-			self.player.currentTime = progressMs / 1000;
+			self.player.currentTime = progressSeconds;
 		}
 	}
 
-	function getProgressMs() {
-		return self.player.currentTime * 1000;
+	function getProgressSeconds() {
+		return self.player.currentTime;
 	}
 
 	function setProgressPercent(progressPercent) {
 
 		if (isNaN(self.player.duration)) {
-			setProgressMs(0);
+			setProgressSeconds(0);
 			return;
 		}
 
 		var progressSeconds = self.player.duration * progressPercent / 100;
-		setProgressMs(progressSeconds * 1000);
+		setProgressSeconds(progressSeconds);
 	}
 
 	function getProgressPercent() {
 		return self.player.currentTime * 100 / self.player.duration;
 	}
 
-	function getDurationMs() {
-		return self.player.duration * 1000;
+	function getDurationSeconds() {
+		return self.player.duration;
 	}
 
 	function getIsPlaying() {
@@ -243,8 +263,8 @@
 
 		self.loading = false;
 
-		if (self.pendingSeekMs >= 0) {
-			setProgressMs(pendingSeekMs);
+		if (self.pendingSeekSeconds >= 0) {
+			setProgressSeconds(pendingSeekSeconds);
 		}
 	}
 
